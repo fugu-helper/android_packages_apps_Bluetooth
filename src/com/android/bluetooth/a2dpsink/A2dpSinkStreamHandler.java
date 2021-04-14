@@ -104,6 +104,9 @@ public class A2dpSinkStreamHandler extends Handler {
             Log.d(TAG, " process message: " + message.what);
             Log.d(TAG, " audioFocus =  " + mAudioFocus);
         }
+        if (mAudioFocus == AudioManager.AUDIOFOCUS_NONE) {
+            requestAudioFocus();
+        }
         switch (message.what) {
             case SRC_STR_START:
                 // Audio stream has started, stop it if we don't have focus.
